@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hanging}
+
+\title{Project Phase 1: Proposal
+
+How COVID-19 Changed Post-Secondary Professors' Health, Hours, and Salaries}
+\author{Kaylee Chan, Meghan George, Davit Barsamyan, Khushi Agrawal}
+\date{December 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+COVID-19 has vastly changed the lifestyles of people worldwide --- permeating throughout our commercial, social, educational lives, and more. In our project, we focus primarily on the impact that the pandemic has left on the education system. More specifically, the educators within our education system. With the sudden shift from in-person to online learning then back and forth again, educators had to quickly train themselves on new technology and practices, reform their teaching styles and methods to accommodate for distanced learning, assume the role of maintaining proper sanitation and safety protocols within the classroom, and adjust to using multiple modes of communication, all while still doing their original duties of connecting with and teaching students (Blintiff, 2020; Sarif, 2020; Research @ Texas Am, 2020; Zamarro, et al., 2021). Through this abrupt change, the shortage of teachers in many schools became more pronounced and many teachers had to expand their role to encompass the extra work required to continue providing proper education throughout the pandemic. Data shows that quarantine made a significant impact on educators' mental health and workload (Zamarro, et al., 2021). Throughout each wave of COVID-19, many teachers had to adapt to each decision made by the government and school boards, which created many fluctuations between online, hybrid, and in-person teaching models throughout the pandemic (Sarif, 2020). The increased disconnect between staff and students as well as the stress this induced has caused many teachers to experience burnout and uncertainty in their career paths. Not only did teachers carry the burden that the pandemic had on them personally, but they had to also account for the concerns of parents and students as the boundary between work and home blurred when working from home and the students' lives as their families navigated the pandemic resulted in secondary trauma for educators (Blaintiff, 2020). This prompted us to form our research question: \textbf{How has COVID-19 changed the roles of teachers in terms of their hours worked and how has this been reflected in their salaries and mental health?} Our data focuses on post secondary school systems in Canada over the last 6 years. We intend to organize the data based on year, school and staff and analyze the changes in the above topics specifically in years prior to the pandemic compared to the years affected by COVID-19 to the present.
+
+\section{Datasets}
+\begin{flushleft}
+\textbf{Time use of postsecondary faculty and researchers (csv file):}\\
+A dataset of time use of faculty and researchers at Canadian colleges and Universities, expressed through the average time per week spent on work.\\
+Columns used: REF\_DATE, Role, avg\_hours\_class\_teaching, avg\_hours\_other\_teaching, avg\_hours\_research, avg\_hours\_administrative, avg\_hours\_total\\
+Source: https://open.canada.ca/data/en/dataset/b418df6f-c208-41eb-8b27-b0f9c8750d5a/resource/e2a7be51-93e3-4229-bf40-f2734aec8a24\hfill \break
+
+\textbf{Number and salaries of full-time teaching staff at Canadian universities (csv file):}\\
+A dataset of time use of salaries of full-time academic teaching staff in Canadian universities, sorted by ranks and number distributions.\\
+Columns used: REF\_DATE, Institution, Rank, average\_salary, median\_salary, tenth\_percentile\_salaries, nintyth\_percentile\_salaries\\
+Source: https://open.canada.ca/data/en/dataset/8002e54e-4577-4c77-aad8-d7fb385db6e7/resource/4faf13fd-856b-4da3-b7c5-ec6b448e87d5\hfill \break
+
+\textbf{The Impact of Demographics, Life and Work Circumstances on College and University Instructors' Well-Being During Quaranteaching (docx file):}\\
+A dataset containing the results of an online survey of ninety-two countries about college and university instructors' mental health throughout COVID-19 since the education system transitioned to online teaching.\\
+Columns used: All\\
+Source: https://frontiersin.figshare.com/articles/dataset/Data\_Sheet\_2\_The\_Impact\_of\\
+\_Demographics\_Life\_and\_Work\_Circumstances\_on\_College\_and\_University\\
+\_Instructors\_Well-Being\_During\_Quaranteaching\_docx/14768799/1
+\end{flushleft}
+
+\section{Computations}
+For the computational part of this project, we created data classes for each dataset: salaries, time use, and mental health, where each column of the dataset is an attribute of the class. To combine all the datasets together, we made specific .py files for each dataset that contain functions that extract and organize the data from their .csv files into tabular data. Then, with that tabular data, we made a .py file to convert the tabular data into dataclasses. We imported dataclasses to create our custom classes, such as Person() and InstitutionSalaries(), which can be seen in our file dataset\_classes.py. These dataclasses were then used to perform basic computations on the data, such as finding the minimum and maximum salaries of the salaries dataset and the percentage difference between salaries for each schoolyear. Alongside these computations, our group made functions that would graph the relationships found in the datasets. There is a graph representing the average salary change from 2016-2021 for each institution in our dataset (in percentages and in CAD amount), a graph representing the maximum and minimum salaries of our dataset for all salary types from 2016-2021, the average salary change form 2016-2021 for each academic rank, a graph representing the average hours worked per academic role, and a graph representing the results from the mental health survey dataset. These different relationships were all presented visually in graphs using the python module plotly. Plotly express and graph objects allowed us to create varying types of graphs. By making functions that constructed custom dataframes (using pandas' function: DataFrame()) based on our datasets, we used plotly functions (such as Figure(), Figure.update\_layout(), bar(), or line()) to  set the parameters for an x and y axis, plot the corresponding data, and create dropdown menus to better understand what the graphs are presenting. Our use of plotly and pandas is seen in our graph\_computations.py file and in functions such as graph\_average\_salary\_change() and graph\_avg\_role\_hours().
+\hfill \break
+
+Raw Dataset Links:\\
+Mental Health Dataset: https://frontiersin.figshare.com/ndownloader/files/28377516
+Salaries Dataset: https://www150.statcan.gc.ca/n1/tbl/csv/37100108-eng.zip
+Time Use Dataset: https://www150.statcan.gc.ca/n1/tbl/csv/37100168-eng.zip
+\hfill \break
+Processed Dataset Download Information:\\
+Using UTSend, input these claim codes and extract the .csv files into the same folder as the .py files:\\
+Claim ID: hteromePveCG5kGd\\
+Claim Passcode: VAyGaYyaNCYa4WUf
+\hfill \break
+
+To run our program, run the main.py file and browser pages will open with our graphs. If the graphs have trouble loading, please try running the main.py file again until all six graphs load.\\
+Six tabs should open with the following graphs:\\
+Average Percentage Salary Change per Year in Canadian Universities (Line graph with dropdown menu to view data from individual institutions)\\
+Minimum and Maximum Salaries per Year of Canadian Universities (Bar graph with dropdown menu to view data from individual salary types)\\
+Average Salary Change per Year for Academic Ranks (Line graph)\\
+Average Hours Worked per Academic Role (Bar graph)\\
+Average Salary Change per Year in Canadian Universities (Line graph with dropdown menu to view data from individual institutions)\\
+Responses to Mental Health Survey (Bar graph with dropdown menu to view individual scales) (Scales use a Likert scale system by using a point system where the lowest point is strongly disagree and the highest point is strongly agree. Negative Affect uses 6 points, Situational Loneliness uses 3 points, and Family and Social Support uses 5 points)\\\hfill \break
+
+\section{Discussions}
+When moving from our project proposal to final submission, we did minimal changes as the only major differences would be in our computational plan and our execution. To better focus on making descriptive and informational graphs, we chose only a few of our initial graph ideas to plot and so we decided to forgo on plotting many attributes, such as geographic region data and characteristic data.
+\hfill \break
+Our project question, "How has COVID-19 changed the roles of teachers in terms of their hours worked and how has this been reflected in their salaries and mental health?" requires inferences made through out computational graphs. By looking at our salary change graphs and comparing it to the mental health survey results, one can make the hypothesis that the impact that COVID-19 had on educators were not reflected proportionally to their salaries, as they continue to grow in a similar rate to previous years. When looking at the 'Minimum and Maximum Salaries per Year of Canadian Universities' graph, it is interesting to note that although the average and ninetieth percentile maximum salary is growing in a visible pattern, their minimum salary peaked in the 2017/2018 schoolyear. This may be correlated to the salary changes per year, because when looking at the 'Average Percentage Salary Change per Year in Canadian Universities' graph, while the schoolyear 2020-2021 has the least negative percentage changes, the most drastic positive percentage changes can be found in the schoolyear 2017-2018. It is unfortunate to see that despite the results from the mental health survey, in the 'Average Salary Change per Year for Academic Ranks' graph that there is very little positive salary change between 2019-2021, which further implies the notion that professors' salaries are not properly reflecting the impacts COVID-19 has made on their livelihoods. By analyzing individual universities in the 'Average Percentage Salary Change per Year in Canadian Universities' graph, there are examples of sharp increases in salary for many universities, such as Cape Breton, Kwantlen Polytechnic, McMaster, and St. Thomas, although it is not clear whether it is because their previous salary changes were already relatively low compared to other universities, because of the impact of COVID-19, or both.\\
+Two limitations we found were in our datasets, as the time use dataset did not have data from 2020 and 2021, so we could not compare the hours worked from pre-COVID to during COVID-19. As well, we could not find more specific data on mental health for professors and could only make as much use as we could from the dataset we did find.\\
+Another obstacle was found in our coding as it was difficult to comprehensively plot the large datasets into succinct and easily understandable graphs, so learning how to create dropdown lists using plotly was a great asset in our graphing. Furthermore, the datasets gathered from open Canada contained French characters, which our .csv files did not take kindly to as they were translated into confusing characters.\\
+For further exploration, an update in our time use dataset would allow for greater relationships to be connected between hours worked and time salaries throughout COVID-19. As well, first-hand surveys and datasets would be useful in exploring the personal impacts that COVID-19 had on educators. There is also opportunity for creating more in-depth graphs with multiple dropdown lists to optimize the information found in our datasets that we had to neglect from our initial plans.
+\section{References}
+\begin{hangparas}{.25in}{1}
+Bintliff, Amy Vatne. “How COVID-19 Has Influenced Teachers’ Well-Being.” Psychology Today, 2020, www.psychologytoday.com/intl/blog/multidimensional-aspects-adolescent-well-being/202009/how-covid-19-has-influenced-teachers-well.\\
+
+https://research.tamu.edu/author/rustycawley. “Study: What Is Pandemic’s Impact on Students, Teachers and Parents?” Research @ Texas A&M | Inform, Inspire, Amaze, 3 Sept. 2020, research.tamu.edu/2020/09/03/covid-19-what-is-the-impact-on-students-educators-and-parents/.\\
+
+Jelińska, M.and M. B. Paradowski. Data\_sheet\_2\_the Impact of Demographics, Life and Work Circumstances on College and University Instructors’ Well-being During Quaranteaching.docx. 1, Frontiers, 11 June 2021, doi:10.3389/fpsyg.2021.643229.s002.\\
+
+Lizana, Pablo A., et al. “Impact of the COVID-19 Pandemic on Teacher Quality of Life: A Longitudinal Study from before and during the Health Crisis.” International Journal of Environmental Research and Public Health, vol. 18, no. 7, 4 Apr. 2021, p. 3764, www.ncbi.nlm.nih.gov/pmc/articles/PMC8038473/, 10.3390/ijerph18073764.\\
+
+Nawaz Sarif. “Teaching Crisis and Teachers’ Role in Times of Covid-19 Pandemic| Countercurrents.” Countercurrents, 2020, countercurrents.org/2020/08/teaching-crisis-and-teachers-role-in-times-of-covid-19-pandemic/.\\
+
+Plotly. “Pie Charts.” Plotly.com, 2011, plotly.com/python/pie-charts/.\\
+
+---. “Plotly.express.pie —  5.3.1 Documentation.” Plotly.com, 2021, plotly.com/python-api-reference/generated/plotly.express.pie.html#plotly.express.pie.\\
+
+---. “Plotly.express.scatter —  5.3.1 Documentation.” Plotly.com, 2021, plotly.com/python-api-reference/generated/plotly.express.scatter.html#plotly.express.scatter.\\
+
+---. “Single-Page Reference.” Plotly.com, 2019, plotly.com/javascript/reference/#scatter-marker-symbol.\\
+
+Statistics Canada. “Number and Salaries of Full-Time Teaching Staff at Canadian Universities - Dataset - Open Government Portal.” Canada.ca, 27 Apr. 2021, open.canada.ca/data/en/dataset/8002e54e-4577-4c77-aad8-d7fb385db6e7/resource/4faf13fd-856b-4da3-b7c5-ec6b448e87d5.\\
+
+---. “Time Use of Postsecondary Faculty and Researchers - Dataset - Open Government Portal.” Canada.ca, 22 Sept. 2020, open.canada.ca/data/en/dataset/b418df6f-c208-41eb-8b27-b0f9c8750d5a/resource/e2a7be51-93e3-4229-bf40-f2734aec8a24.\\
+
+Zamarro, Gema, et al. “How the Pandemic Has Changed Teachers’ Commitment to Remaining in the Classroom.” Brookings, Brookings, 8 Sept. 2021, www.brookings.edu/blog/brown-center-chalkboard/2021/09/08/how-the-pandemic-has-changed-teachers-commitment-to-remaining-in-the-classroom/.
+\end{hangparas}
+
+\newpage
+\begin{figure}
+    \includegraphics[width=10cm]{avg_percent_scr.png}
+    \caption{Average Percentage Salary Change per Year in Canadian Universities}
+    \includegraphics[width=10cm]{min_max_scr.png}
+    \caption{Minimum and Maximum Salaries per Year of Canadian Universities}
+    \includegraphics[width=10cm]{avg_salary_scr.png}
+    \caption{Average Salary Change per Year for Academic Ranks}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=10cm]{avg_hr_scr.png}
+    \caption{Average Hours Worked per Academic Role}
+    \includegraphics[width=10cm]{avg_change_scr.png}
+    \caption{Average Salary Change per Year in Canadian Universities}
+    \includegraphics[width=10cm]{health_scr.png}
+    \caption{Responses to Mental Health Survey}
+\end{figure}
+\end{document}

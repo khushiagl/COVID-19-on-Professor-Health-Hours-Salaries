@@ -1,0 +1,8 @@
+# Project Phase 2: Submission: Python libraries used in CSC110 final project.
+
+# Testing and code checking
+python-ta
+
+# Data visualization
+plotly
+pandas
